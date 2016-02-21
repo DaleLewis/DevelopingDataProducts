@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nursing Home Finder Shiny Application Pitch</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Nursing Home Finder Shiny Application Pitch">
+  <meta name="author" content="L. D. Schroyer - February 20, 2016">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Nursing Home Finder Shiny Application Pitch</h1>
+    <h2>Developing Data Products Course Project</h2>
+    <p>L. D. Schroyer - February 20, 2016<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Background</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The greying of America causes more and more people to have to struggle with finding a good nursing home to care for their loved ones. They need good information on which to make placement decisions.</p>
+
+<ul>
+<li>CMS has information on all the nursing homes in the US.</li>
+<li>Most of this information is tabular.</li>
+<li>It is not easily searched.</li>
+<li>It is not displayed in a user friendly format.</li>
+<li>The CMS databse is very large with approximately one hundred fields of information.</li>
+<li>Database from CMS does not include geographical coordinates.</li>
+<li>So much information is provided that it is confusing for the consumer.</li>
+<li>A more concise user friendly method is needed to enable bettwer placement decisions.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Covert The CMS Data to User Friendly Information</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Download the database from CMS.gov</li>
+<li>Download a database of Zip Code longitude and latitudes from <a href="http://www.gaslampmedia.com">www.gaslampmedia.com</a></li>
+<li>Subset the CMS data down to the key factors
+
+<ul>
+<li>Nursing Home Name and Address</li>
+<li>Nursing Home Quality Rating </li>
+</ul></li>
+<li>Join the two databases on zip code to add the geographical coordinates to form the Nursing Home Database</li>
+<li>Reduce the resulting data frame to only the important fields of information
+
+<ul>
+<li>Nursing home name and address </li>
+<li>Nursing home zip code with geographical coordinates (lng,lat)</li>
+<li>Nursing home CMS quality rating</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>The User Friendly Nursing Home Finder</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>This application uses the dataset generated above as the data source for the application</li>
+<li>Shiny inputs were created that take in the user&#39;s zip code and a search radius</li>
+<li>The application then searches the CMS database to find all homes within the search radius
+
+<ul>
+<li>Distance is calculated using the geosphere package distHaversine function</li>
+</ul></li>
+<li>The ten closet homes are then selected from these results</li>
+<li>These ten homes are populated into the tabbed output
+
+<ul>
+<li>The first tab displays a table output arranged by distance</li>
+<li>The second tab displays a map with markers for each of the ten homes</li>
+<li>The map also displays a red cirle at the user&#39;s zip code coordinates</li>
+</ul></li>
+<li>The zip code or the search radius can both be changed</li>
+<li>The user must press the submit button after any such change to see the updated (reactive) results</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Example Application Output Screen</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="C:/Users/Dale/Documents/Coursera/DevelopingDataProducts/DataProductsCourseProject/Nursing%20Home%20Finder%20Pitch/screen1lgdarker.PNG" alt="Table"></p>
+
+<p>The full application can be found <a href="https://lewisdale.shinyapps.io/DataProductsCourseProject/">here.</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Background'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Covert The CMS Data to User Friendly Information'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The User Friendly Nursing Home Finder'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Example Application Output Screen'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
